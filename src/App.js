@@ -46,7 +46,7 @@ function App() {
         if (currentDirectory === '~') {
           addTerminalOutput('about_me\nprojects\nexperience\nskills\neducation\ncontact');
         } else if (currentDirectory === '~/projects') {
-          addTerminalOutput('shell_implementation\nretriever_study\nkernel_cpu_scheduler');
+          addTerminalOutput('memory_encapsulation_filesystem\nshell_implementation\nretriever_study\nkernel_cpu_scheduler');
         } else if (currentDirectory === '~/experience') {
           addTerminalOutput('finra.md\namerican_university.md');
         } else {
@@ -86,8 +86,12 @@ function App() {
       case 'cat':
         if (parts.length > 1) {
           const file = parts[1];
-          if (currentDirectory === '~/projects' && file === 'retriever_study') {
+          if (currentDirectory === '~/projects' && file === 'memory_encapsulation_filesystem') {
+            addTerminalOutput('# Multimedia Embedded Memory Encapsulation Filesystem\n\nA complete read/write FAT-based filesystem in user space using the FUSE library, simulating a 128 KiB virtual disk image.\n\n## Technologies\n\n- C\n- FUSE\n- Linux Kernel\n- Filesystem\n\n## Key Features\n\n- Implemented file operations (getattr, readdir, open, read, create, write, unlink, truncate)\n- Designed robust endianness handling and BCD timestamp encoding\n- Engineered fault-tolerant operations with synchronized superblocks and FATs');
+          } else if (currentDirectory === '~/projects' && file === 'retriever_study') {
             addTerminalOutput('# Retriever Study\n\nAn online platform connecting students for study groups using Spring Boot backend and React interface.\n\n## Technologies\n\n- Java\n- Spring Boot\n- MongoDB\n- React\n- Google Calendar API');
+          } else if (currentDirectory === '~/projects' && file === 'kernel_cpu_scheduler') {
+            addTerminalOutput('# Kernel-Level CPU Scheduler\n\nA custom CPU scheduler implemented as a Linux kernel module with syscalls for task creation and resource management.\n\n## Technologies\n\n- C\n- Linux Kernel\n- Multithreading\n\n## Key Features\n\n- Reduced context switching overhead by 25% through efficient priority queue implementation\n- Improved throughput by 15%\n- Achieved 99.8% thread safety with zero race conditions across 10,000+ test cycles');
           } else if (currentDirectory === '~/experience' && file === 'finra.md') {
             addTerminalOutput('# Finra\n\nPosition: Incoming Software Engineer Intern\nDuration: March 2025 - Present\nLocation: Rockville, MD');
           } else if (currentDirectory === '~/experience' && file === 'american_university.md') {
@@ -182,39 +186,33 @@ function App() {
   // Project data
   const projects = [
     {
+      id: 'memory_encapsulation_filesystem',
+      title: 'Multimedia Embedded Memory Encapsulation Filesystem',
+      description: 'Engineered a complete read/write FAT-based filesystem in user space using the FUSE library, simulating a 128 KiB virtual disk image with superblocks, directory entries, and a File Allocation Table.',
+      technologies: ['C', 'FUSE', 'Linux Kernel', 'Filesystem'],
+      metrics: [
+        'Reduced metadata overhead by 32% compared to standard FAT implementations',
+        'Decreased file operation latency by 28% through optimized block allocation',
+        'Ensured 99.9% data integrity during concurrent operations'
+      ],
+      demoUrl: 'https://github.com/rodriguezzfabricio/memefs',
+      demoType: 'github',
+      videoUrl: 'https://youtu.be/dQw4w9WgXcQ',
+      videoDuration: "2:05",
+      screenGif: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODhiMzVtcDN3MTVobmJmZWY2bjZ2Mm0zbnJrZ3FneXJ0d3ZmNXVxZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif',
+      deploymentPlatform: 'GitHub',
+      screenshots: [
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODhiMzVtcDN3MTVobmJmZWY2bjZ2Mm0zbnJrZ3FneXJ0d3ZmNXVxZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif',
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDVkZ3FraWM5aXFkc2Y1eWJ3eTZhN2FwcXB0ZDc2dDFidDFpZDB3OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif',
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2gxcHZkdTVqZGI0eWdwcnB2aGR2ZmY2NWtwMnlyaTgxdXNwZHBzOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYNdaWCQGYELXIk/giphy.gif'
+      ]
+    },
+    {
       id: 'shell_implementation',
       title: 'Shell Implementation',
       description: 'Built a Unix-like shell from scratch, implementing core commands like cd, pwd, and type for file system navigation.',
       technologies: ['C++', 'Filesystem', 'POSIX'],
       metrics: ['Handled 10k operations/sec on large filesystem images', 'Reduced command latency by 35%', 'Memory footprint < 4MB'],
-      codeSnippet: `// shell.cpp - Execute command with fork and execvp
-bool Shell::executeCommand(const std::string& cmd, const std::vector<std::string>& args) {
-  pid_t pid = fork();
-  
-  if (pid == -1) {
-    std::cerr << "Fork failed: " << strerror(errno) << std::endl;
-    return false;
-  } else if (pid == 0) {
-    // Child process
-    std::vector<char*> c_args;
-    c_args.push_back(const_cast<char*>(cmd.c_str()));
-    
-    for (const auto& arg : args) {
-      c_args.push_back(const_cast<char*>(arg.c_str()));
-    }
-    c_args.push_back(nullptr);
-    
-    execvp(cmd.c_str(), c_args.data());
-    // execvp only returns on error
-    std::cerr << "Exec failed: " << strerror(errno) << std::endl;
-    exit(1);
-  } else {
-    // Parent process
-    int status;
-    waitpid(pid, &status, 0);
-    return WIFEXITED(status) && WEXITSTATUS(status) == 0;
-  }
-}`,
       demoUrl: 'https://github.com/rodriguezzfabricio/shell-implementation',
       demoType: 'github', // 'github', 'video', 'live'
       videoUrl: 'https://youtu.be/dQw4w9WgXcQ',
@@ -233,46 +231,6 @@ bool Shell::executeCommand(const std::string& cmd, const std::vector<std::string
       description: 'Designed an online platform connecting students for study groups with Spring Boot backend and React interface.',
       technologies: ['Java', 'Spring Boot', 'MongoDB', 'React', 'Google Calendar API'],
       metrics: ['Improved student team formation by 45%', 'Served 100+ active users', 'Reduced scheduling conflicts by 85%'],
-      codeSnippet: `// StudyGroupService.java - Create new study group
-@Service
-public class StudyGroupService {
-  private final StudyGroupRepository groupRepository;
-  private final UserRepository userRepository;
-  private final CalendarService calendarService;
-  
-  @Autowired
-  public StudyGroupService(StudyGroupRepository groupRepository, 
-                          UserRepository userRepository,
-                          CalendarService calendarService) {
-    this.groupRepository = groupRepository;
-    this.userRepository = userRepository;
-    this.calendarService = calendarService;
-  }
-  
-  @Transactional
-  public StudyGroup createGroup(StudyGroupDTO groupDTO, String creatorId) {
-    User creator = userRepository.findById(creatorId)
-      .orElseThrow(() -> new UserNotFoundException("Creator not found"));
-      
-    StudyGroup group = new StudyGroup();
-    group.setName(groupDTO.getName());
-    group.setSubject(groupDTO.getSubject());
-    group.setCreator(creator);
-    group.addMember(creator);
-    group.setMaxMembers(groupDTO.getMaxMembers());
-    
-    // Schedule calendar event
-    String eventId = calendarService.createEvent(
-      groupDTO.getName(),
-      groupDTO.getStartTime(),
-      groupDTO.getEndTime(),
-      groupDTO.getLocation()
-    );
-    group.setCalendarEventId(eventId);
-    
-    return groupRepository.save(group);
-  }
-}`,
       demoUrl: 'https://retriever-study.netlify.app',
       demoType: 'live',
       videoUrl: 'https://youtu.be/dQw4w9WgXcQ',
@@ -290,30 +248,11 @@ public class StudyGroupService {
       title: 'Kernel-Level CPU Scheduler',
       description: 'Implemented a custom CPU scheduler as a Linux kernel module with syscalls for task creation and resource management.',
       technologies: ['C', 'Linux Kernel', 'Multithreading'],
-      metrics: ['Reduced context switching by 25%', 'Improved throughput by 15%', 'Optimized for real-time processing'],
-      codeSnippet: `// kernel_scheduler.c - Main scheduling function
-static void scheduler_tick(struct task_struct *curr)
-{
-  unsigned long flags;
-  struct rq *rq;
-  
-  local_irq_save(flags);
-  rq = this_rq();
-  update_rq_clock(rq);
-  update_cpu_load_active(rq);
-  curr->sched_class->task_tick(rq, curr, 0);
-  calculate_load_tick();
-  
-  // Check if preemption needed
-  if (curr->static_prio < rt_prio(0) && 
-      time_slice_expired(curr) && 
-      task_running(curr)) {
-    set_tsk_need_resched(curr);
-    clear_tsk_skip_tick(curr);
-  }
-  
-  local_irq_restore(flags);
-}`,
+      metrics: [
+        'Reduced context switching overhead by 25% through efficient priority queue implementation',
+        'Improved throughput by 15%',
+        'Achieved 99.8% thread safety with zero race conditions across 10,000+ test cycles'
+      ],
       demoUrl: 'https://github.com/rodriguezzfabricio/kernel-scheduler',
       demoType: 'github',
       videoUrl: 'https://youtu.be/dQw4w9WgXcQ',
@@ -510,22 +449,6 @@ static void scheduler_tick(struct task_struct *curr)
                     ))}
                   </div>
                 </div>
-                
-                {project.challenges && (
-                  <div>
-                    <h4 className="text-terminal-green mb-2">Challenges & Solutions</h4>
-                    <p className="text-gray-300">{project.challenges}</p>
-                  </div>
-                )}
-                
-                {project.codeSnippet && (
-                  <div>
-                    <h4 className="text-terminal-green mb-2">Key Code Snippet</h4>
-                    <pre className="bg-terminal-darkGray p-3 rounded overflow-x-auto text-gray-300 text-sm">
-                      <code>{project.codeSnippet}</code>
-                    </pre>
-                  </div>
-                )}
               </div>
             )}
             
@@ -618,7 +541,7 @@ static void scheduler_tick(struct task_struct *curr)
           
           <div className="flex justify-between mt-4 pt-3 border-t border-terminal-gray/30">
             <div className="text-sm text-gray-400">
-              <span>Project created: {project.createdAt || '2023'}</span>
+              
             </div>
             <div className="flex space-x-3 text-sm">
               {project.demoUrl && (
@@ -676,12 +599,13 @@ static void scheduler_tick(struct task_struct *curr)
           <div className="mt-4 p-4 bg-terminal-darkGray/30 rounded-md border border-terminal-gray">
             <h3 className="text-xl font-bold text-terminal-green mb-2">About Me</h3>
             <p className="text-gray-300 mb-2">
-              I'm a Computer Science student at University of Maryland Baltimore County with strong interests in software engineering, 
-              data science, and system-level programming. I specialize in developing applications with Python, Java, C/C++, and web technologies.
+              Computer Science student at UMBC with expertise spanning systems programming and full-stack development. My technical portfolio includes kernel-level CPU schedulers and custom Unix shells, as well as responsive web applications using React and Spring Boot.
+            </p>
+            <p className="text-gray-300 mb-2">
+              I specialize in developing efficient solutions across the entire software stack—from low-level C/C++ implementations to intuitive user interfaces. Currently preparing for my upcoming role at Finra, I continue to refine my skills in creating robust, performance-optimized applications.
             </p>
             <p className="text-gray-300">
-              I'm passionate about building efficient systems and solving complex problems through programming.
-              When I'm not coding, you'll find me exploring new technologies and contributing to the open-source community.
+              Driven by technical challenges and committed to excellence in software engineering, I aim to develop innovative solutions that make a meaningful impact.
             </p>
           </div>
         );
