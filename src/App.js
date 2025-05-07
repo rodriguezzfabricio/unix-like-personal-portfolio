@@ -597,16 +597,27 @@ function App() {
       case 'about_me':
         return (
           <div className="mt-4 p-4 bg-terminal-darkGray/30 rounded-md border border-terminal-gray">
-            <h3 className="text-xl font-bold text-terminal-green mb-2">About Me</h3>
-            <p className="text-gray-300 mb-2">
-              Computer Science student at UMBC with expertise spanning systems programming and full-stack development. My technical portfolio includes kernel-level CPU schedulers and custom Unix shells, as well as responsive web applications using React and Spring Boot.
-            </p>
-            <p className="text-gray-300 mb-2">
-              I specialize in developing efficient solutions across the entire software stack—from low-level C/C++ implementations to intuitive user interfaces. Currently preparing for my upcoming role at Finra, I continue to refine my skills in creating robust, performance-optimized applications.
-            </p>
-            <p className="text-gray-300">
-              Driven by technical challenges and committed to excellence in software engineering, I aim to develop innovative solutions that make a meaningful impact.
-            </p>
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3 flex justify-center">
+                <img 
+                  src="/assets/images/profile.jpg" 
+                  alt="Fabricio Rodriguez"
+                  className="w-48 h-48 rounded-full border-4 border-terminal-green shadow-lg object-cover" 
+                />
+              </div>
+              <div className="md:w-2/3">
+                <h3 className="text-xl font-bold text-terminal-green mb-2">About Me</h3>
+                <p className="text-gray-300 mb-2">
+                  Computer Science student at UMBC with expertise spanning systems programming and full-stack development. My technical portfolio includes kernel-level CPU schedulers and custom Unix shells, as well as responsive web applications using React and Spring Boot.
+                </p>
+                <p className="text-gray-300 mb-2">
+                  I specialize in developing efficient solutions across the entire software stack—from low-level C/C++ implementations to intuitive user interfaces. Currently preparing for my upcoming role at Finra, I continue to refine my skills in creating robust, performance-optimized applications.
+                </p>
+                <p className="text-gray-300">
+                  Driven by technical challenges and committed to excellence in software engineering, I aim to develop innovative solutions that make a meaningful impact.
+                </p>
+              </div>
+            </div>
           </div>
         );
       case 'projects':
