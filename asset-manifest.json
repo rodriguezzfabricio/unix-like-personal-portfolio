@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/unix-like-personal-portfolio/static/css/main.9aa958c5.css",
+    "main.js": "/unix-like-personal-portfolio/static/js/main.eee42a7a.js",
+    "index.html": "/unix-like-personal-portfolio/index.html",
+    "main.9aa958c5.css.map": "/unix-like-personal-portfolio/static/css/main.9aa958c5.css.map",
+    "main.eee42a7a.js.map": "/unix-like-personal-portfolio/static/js/main.eee42a7a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9aa958c5.css",
+    "static/js/main.eee42a7a.js"
+  ]
+}
