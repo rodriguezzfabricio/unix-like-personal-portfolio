@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import EnhancedProjectCard from '../components/EnhancedProjectCard'
-import supabase from '../services/supabaseClient'
 
 interface Project {
   id: number
@@ -27,12 +26,7 @@ function Projects() {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        // You could fetch from Supabase here
-        // const { data, error } = await supabase.from('projects').select('*')
-        // if (error) throw error
-        // setProjects(data)
-        
-        // For now, using mock data
+        // Using mock data
         const mockProjects: Project[] = [
           {
             id: 1,

@@ -6,9 +6,9 @@ A unique portfolio website with a hybrid terminal + modern navigation bar interf
 
 ## Features
 
-- **Interactive Terminal**: Navigate the website like a UNIX terminal with commands like `ls`, `cd`, and `cat`
+- **Interactive Terminal Interface**: Navigate through a Unix-like terminal
 - **Modern Navigation**: Traditional navigation bar for those who prefer clicking
-- **Responsive Design**: Works on both desktop and mobile devices
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Dynamic Content**: Backend powered by Supabase for easy content updates
 - **Animations**: Smooth transitions using Framer Motion
 
@@ -31,10 +31,9 @@ Once the site is loaded, you can use the following commands in the terminal:
 - **Contact**: Get in touch form and contact information
 - **Blog**: (Coming soon)
 
-## Technology Stack
+## Tech Stack
 
-- **Frontend**: React + TypeScript
-- **Styling**: TailwindCSS
+- **Frontend**: React, TailwindCSS
 - **Animations**: Framer Motion
 - **Backend**: Supabase (PostgreSQL)
 - **Deployment**: GitHub Pages
@@ -52,17 +51,29 @@ Once the site is loaded, you can use the following commands in the terminal:
    npm install
    ```
 
-3. Start the development server:
+3. Set up environment variables:
+   - Copy `.env.example` to a new file named `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Update the `.env` file with your Supabase credentials:
+     ```
+     REACT_APP_SUPABASE_URL=your_supabase_url_here
+     REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+     ```
+   - Note: The `.env` file is ignored by Git to keep your credentials secure
+
+4. Start the development server:
    ```bash
    npm start
    ```
 
-4. Build for production:
+5. Build for production:
    ```bash
    npm run build
    ```
 
-5. Deploy to GitHub Pages:
+6. Deploy to GitHub Pages:
    ```bash
    npm run deploy
    ```
