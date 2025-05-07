@@ -21,7 +21,7 @@ function Home() {
       <div className="flex flex-col md:flex-row gap-6 bg-terminal-darkGray p-6 rounded-lg border border-terminal-gray mb-8">
         <div className="md:w-1/3 flex justify-center">
           <img 
-            src="/assets/images/profile.jpg" 
+            src="https://rodriguezzfabricio.github.io/unix-like-personal-portfolio/assets/images/profile.jpg" 
             alt="Fabricio Rodriguez"
             className="w-48 h-48 rounded-full border-4 border-terminal-green shadow-lg object-cover" 
           />
